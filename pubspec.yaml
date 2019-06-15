@@ -1,0 +1,21 @@
+name: line_charts
+description: A new Flutter plugin.
+version: 0.0.1
+author: Damián Rincón Cañaveral
+homepage:
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    androidPackage: mx.rincon.damian.line_charts
+    pluginClass: LineChartsPlugin
