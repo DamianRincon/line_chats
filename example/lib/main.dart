@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:line_charts/line_charts.dart';
+import 'package:line_charts/line_data.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,44 +10,41 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+
+  List<LineChartData> datos = new List<LineChartData>();
 
   @override
   void initState() {
+    datos.add(new LineChartData(
+      "Ganancias",
+      [10,4,6,8,10,20,14,16,18,20],
+      Colors.red
+    ));
+    datos.add(new LineChartData(
+      "Gastos",
+      [3,6,9,12,30,8,21,24,27,15],
+      Colors.blue
+    ));
     super.initState();
-    initPlatformState();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await LineCharts.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
+      body:Center(child: Container(
+          height: 200,
+          child: Padding(
+          padding: EdgeInsets.all(10),
+          child: LineCharts(
+            data: datos,
+            showLabel: true,
+            lineWidth: 4.0,
+          ),
+          )
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
+      )
       ),
     );
   }

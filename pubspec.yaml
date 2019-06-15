@@ -2,7 +2,7 @@ name: line_charts
 description: A new Flutter plugin.
 version: 0.0.1
 author: Damián Rincón Cañaveral
-homepage:
+homepage: https://github.com/DamianRincon/line_chats.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
